@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestor Financeiro - Espaço Florescer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="tabs">
+            <button class="tab-button" onclick="openTab(event, 'lancamentos')">Lançamentos</button>
+            <button class="tab-button" onclick="openTab(event, 'relatorio')">Relatório de Registros</button>
+            <button class="tab-button" onclick="openTab(event, 'funcionarios')">Cadastro de Funcionários</button>
+            <button class="tab-button" onclick="openTab(event, 'sobre')">Sobre</button>
+        </div>
+
+        <!-- Relatório de Registros -->
+        <div id="relatorio" class="tab-content">
+            <h3>Relatório de Registros</h3>
+            <div id="totalReceitas"></div>
+            <div id="totalDespesas"></div>
+            <div id="saldo"></div>
+        </div>
+
+        <!-- Lançamentos (Separados em Receitas e Despesas) -->
+        <div id="lancamentos" class="tab-content">
+            <h3>Lançamentos</h3>
+            <form id="formCadastro">
+                <select id="tipo" required>
+                    <option value="receita">Receita</option>
+                    <option value="despesa">Despesa</option>
+                </select><br><br>
+
+                <input type="text" id="descricao" placeholder="Descrição" required><br><br>
+                <input type="number" id="valor" placeholder="Valor" step="0.01" required><br><br>
+                <textarea id="detalhes" placeholder="Detalhes (opcional)"></textarea><br><br>
+                <input type="date" id="data" required><br><br>
+
+                <button type="submit">Cadastrar Lançamento</button>
+            </form>
+            
+            <!-- Botões para mostrar/ocultar lançamentos -->
+            <button id="showReceitasBtn" onclick="toggleLancamentos('receitas')">Mostrar Receitas</button>
+            <button id="showDespesasBtn" onclick="toggleLancamentos('despesas')">Mostrar Despesas</button>
+            
+            <h4>Receitas</h4>
+            <ul id="listaReceitas" style="display:none;"></ul>
+            <h4>Despesas</h4>
+            <ul id="listaDespesas" style="display:none;"></ul>
+        </div>
+
+        <!-- Cadastro de Funcionários -->
+        <div id="funcionarios" class="tab-content">
+            <h2>Cadastro de Funcionários</h2>
+            <form id="formFuncionario">
+                <input type="text" id="nomeFuncionario" placeholder="Nome" required><br><br>
+                <input type="text" id="cargoFuncionario" placeholder="Cargo" required><br><br>
+                <input type="number" id="salarioFuncionario" placeholder="Salário" required><br><br>
+                <input type="text" id="horarioFuncionario" placeholder="Horário de Trabalho" required><br><br>
+                <button type="submit">Cadastrar Funcionário</button>
+            </form>
+            <ul id="listaFuncionarios"></ul>
+        </div>
+
+        <!-- Sobre -->
+        <div id="sobre" class="tab-content">
+            <h2>Sobre</h2>
+            <p>Este é um gestor financeiro para a empresa "Espaço Florescer" - Recreação Infantil. A plataforma permite o cadastro de lançamentos financeiros e funcionários.</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
